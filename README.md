@@ -77,13 +77,13 @@ The API has
           "type": 2
         },
         {
-          "name": "Tabby",
+          "name": "Simba",
           "type": 2
         },
         {
-          "name": "Simba",
+          "name": "Tabby",
           "type": 2
-        }
+        }        
       ]
     }
   ]
