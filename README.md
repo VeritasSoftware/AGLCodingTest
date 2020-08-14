@@ -118,3 +118,5 @@ The app has
 | ------- | ------ |
 | ASPNET Core 3.1 Web API | Visual Studio 2019 |
 | Angular 10 CLI app | Visual Studio Code |
+
+The Angular 10 app has been tested with Node v 14.8.0.
