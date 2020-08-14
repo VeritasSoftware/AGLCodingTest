@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, style, animate, transition} from '@angular/animations';
 
 import { PetsByPersonGenderCollection, Gender, PetType } from '../../models/models';
 import { PetsService } from '../../services/pets-service/pets-service';
@@ -7,6 +8,14 @@ import { PetsService } from '../../services/pets-service/pets-service';
   selector: 'app-agl-pets',
   templateUrl: './agl-pets.component.html',
   styleUrls: ['./agl-pets.component.scss'],
+  animations: [
+    trigger('fade', [ 
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate(2000, style({opacity: 1}))
+      ]) 
+    ])
+  ],
   providers: [ PetsService ]
 })
 export class AglPetsComponent implements OnInit {
