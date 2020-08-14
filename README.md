@@ -7,7 +7,7 @@ It consists of
 *   An **ASPNET Core 3.1 Web API** back end micro service
 *   An **Angular 10 CLI app** front end UI
 
-### ASPNET Core 3.1 Web API micro service architecture - back end
+### ASPNET Core 3.1 Web API - Back end
 
 The API has
 
@@ -90,7 +90,7 @@ The API has
 }
 ```
 
-### Angular 10 CLI app architecture - UI front end
+### Angular 10 CLI app - UI front end
 
 The app has
 
