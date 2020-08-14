@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PetsByPersonGenderCollection, Gender } from '../../models/models';
+import { PetsByPersonGenderCollection, Gender, PetType } from '../../models/models';
 import { PetsService } from '../../services/pets-service/pets-service';
 
 @Component({
@@ -11,8 +11,11 @@ import { PetsService } from '../../services/pets-service/pets-service';
 })
 export class AglPetsComponent implements OnInit {
 
-  catsByPersonGender: PetsByPersonGenderCollection;
+  petsByPersonGender: PetsByPersonGenderCollection;
+  PetType : typeof 
+  PetType = PetType; 
   genders: string[];
+  selectedPetType: PetType;
 
   /******************************************/
   /* Constructor                            */
@@ -22,17 +25,26 @@ export class AglPetsComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.catsByPersonGender = null;
-      this.genders = [Gender[Gender.Male], Gender[Gender.Female]];
+      this.petsByPersonGender = null;
+      this.genders = [Gender[Gender.Male], Gender[Gender.Female]];      
 
       //call to API using injected Pets Service
-      this.petsService.GetCatsByPersonGender().subscribe(x => {
-        this.catsByPersonGender = x;
+      this.petsService.GetPetsByPersonGender(PetType.Dog).subscribe(x => {
+        this.selectedPetType = PetType.Dog;
+        this.petsByPersonGender = x;
       });
     }
     catch(e){
       alert(e);
     }
+  }
+
+  async getPets(petType: PetType)
+  {
+    this.petsService.GetPetsByPersonGender(petType).subscribe(x => {
+      this.selectedPetType = petType;
+      this.petsByPersonGender = x;
+    });
   }
 
 }

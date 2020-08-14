@@ -20,7 +20,7 @@ export class PetsService implements IPetsService {
     /* Get the pets by pet type and by owner's gender */
     /* Make http call to API                          */
     /**************************************************/
-    private GetPetsByPersonGender(petType: PetType): Observable<PetsByPersonGenderCollection> {
+    public GetPetsByPersonGender(petType: PetType): Observable<PetsByPersonGenderCollection> {
         var url = this.config.apiEndpoint + "petsbypersongender/" + petType.toString();
 
         //http call to API using HttpClient
