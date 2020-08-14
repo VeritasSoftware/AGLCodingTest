@@ -2,13 +2,13 @@ h1 {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 25px;
     padding: 20px 10px;
-    text-align: center;
+    // text-align: center;
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
     
     &.elegantshadow {
       color: #131313;
-      background-color: #e7e5e4;
+      background-color:white;
       letter-spacing: .15em;
       text-shadow: 
         1px -1px 0 #767676, 
