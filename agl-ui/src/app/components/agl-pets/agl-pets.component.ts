@@ -37,11 +37,7 @@ export class AglPetsComponent implements OnInit {
       this.petsByPersonGender = null;
       this.genders = [Gender[Gender.Male], Gender[Gender.Female]];      
 
-      //call to API using injected Pets Service
-      this.petsService.GetPetsByPersonGender(PetType.Dog).subscribe(x => {
-        this.selectedPetType = PetType.Dog;
-        this.petsByPersonGender = x;
-      });
+      this.getPets(PetType.Dog);
     }
     catch(e){
       alert(e);
