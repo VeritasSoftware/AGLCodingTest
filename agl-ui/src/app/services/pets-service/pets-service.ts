@@ -26,8 +26,4 @@ export class PetsService implements IPetsService {
         //http call to API using HttpClient
         return this.http.get<PetsByPersonGenderCollection>(url);
     }  
-
-    public GetCatsByPersonGender(): Observable<PetsByPersonGenderCollection> {
-        return this.GetPetsByPersonGender(PetType.Cat);
-    }
 }
