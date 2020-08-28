@@ -25,7 +25,7 @@ namespace AGL.Application
         public PetsManager(IPetsRepository petsRepository, IMapperService mapperService)
         {
             _petsRepository = petsRepository ?? throw new ArgumentNullException(nameof(petsRepository));
-            _mapperService = mapperService ?? throw new ArgumentNullException(nameof(petsRepository));
+            _mapperService = mapperService ?? throw new ArgumentNullException(nameof(mapperService));
         }
 
         public void Dispose()
@@ -37,7 +37,7 @@ namespace AGL.Application
         /// </summary>
         /// <param name="petType">The Pet type</param>
         /// <remarks>Throws ArgumentNullException</remarks>
-        /// <returns><see cref="Task{PetsByPersonGenderCollection}"/></returns>
+        /// <returns><see cref="Task{PetsByPersonGenderCollectionModel}"/></returns>
         public async Task<PetsByPersonGenderCollectionModel> GetPetsByPersonGender(Models.PetType petType)
         {
             var entitiesPetType = (Entities.PetType)(int)petType;

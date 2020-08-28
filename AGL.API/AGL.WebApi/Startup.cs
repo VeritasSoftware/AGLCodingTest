@@ -1,18 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using AGL.Application;
-using AGL.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using System.Text.Json.Serialization;
 
 namespace AGL.WebApi
 {
@@ -28,15 +19,8 @@ namespace AGL.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Get AGL section from AppSettings
-            var aglSection = this.Configuration.GetSection("AGL").Get<AGLSettings>();
-            //Get API Url
-            var apiUrl = aglSection.ApiUrl;
-
-            //add dependency injection
-            services.AddScoped<IPetsRepository, PetsRepository>(x => new PetsRepository { Url = apiUrl });
-            services.AddScoped<IPetsManager, PetsManager>();
-            services.AddScoped<IMapperService, MapperService>();
+            //Add Pet Store dependency injection
+            services.AddPetStore(this.Configuration);
 
             //Add CORS support
             services.AddCors();
