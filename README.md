@@ -21,12 +21,16 @@ The API has
             *   This uses HttpClient to fetch the pets and their owners. It uses **Newtonsoft.Json** to deserialize the data. 
             *   This Repository is injected into the Pets Manager.
 
+![Repository Layer](https://github.com/VeritasSoftware/AGLCodingTest/blob/master/AGL.API/RepositoryLayer.JPG)
+
 *   a Business Logic project
     *   This contains
         
         *   a Pets Manager
             *   This uses LINQ to extract the pets by pet type and owner's gender from the data. 
             *   This Pets Manager is injected into the Controller.            
+
+![Business Layer](https://github.com/VeritasSoftware/AGLCodingTest/blob/master/AGL.API/BusinessLayer.JPG)
 
 * an ASPNET Core 3.1 Web API project
     *   This contains

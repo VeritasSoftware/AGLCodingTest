@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.UnitTests", "AGL.UnitTe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{255F8157-13F8-49B3-AC43-FC9F5DF20038}"
 	ProjectSection(SolutionItems) = preProject
+		BusinessLayer.jpg = BusinessLayer.jpg
 		..\README.md = ..\README.md
+		RepositoryLayer.jpg = RepositoryLayer.jpg
 		SwaggerScreenshot.JPG = SwaggerScreenshot.JPG
 	EndProjectSection
 EndProject
