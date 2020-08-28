@@ -40,7 +40,7 @@ namespace AGL.Application
         /// <returns><see cref="Task{PetsByPersonGenderCollection}"/></returns>
         public async Task<PetsByPersonGenderCollectionModel> GetPetsByPersonGender(Models.PetType petType)
         {
-            var entitiesPetType = (Entities.PetType)Enum.Parse(typeof(Entities.PetType), petType.ToString());
+            var entitiesPetType = (Entities.PetType)(int)petType;
 
             var persons = await _petsRepository.GetPersonAndPets();
             
