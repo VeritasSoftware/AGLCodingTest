@@ -90,6 +90,12 @@ The API has
 }
 ```
 
+**API Swagger Screenshot:**
+
+![Screenshot](https://github.com/VeritasSoftware/AGLCodingTest/blob/master/AGL.API/SwaggerScreenshot.JPG)
+
+
+
 ### Angular 10 CLI app - UI front end
 
 The app has

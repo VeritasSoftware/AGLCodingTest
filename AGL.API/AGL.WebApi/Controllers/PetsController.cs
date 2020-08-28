@@ -29,9 +29,9 @@ namespace AGL.API.Controllers
         /// <param name="petType">The pet type</param>
         /// <returns><see cref="Task{PetsByPersonGenderCollection}"/></returns>
         [HttpGet("petsbypersongender/{petType}")]
-        public async Task<PetsByPersonGenderCollection> GetPetsByPersonGender(PetType petType)
+        public async Task<IActionResult> GetPetsByPersonGender(PetType petType)
         {
-            return await _petsManager.GetPetsByPersonGender(petType);
+            return Ok(await _petsManager.GetPetsByPersonGender(petType));
         }        
     }
 }

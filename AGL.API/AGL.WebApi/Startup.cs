@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AGL.Application;
 using AGL.Repository;
@@ -39,7 +40,11 @@ namespace AGL.WebApi
             //Add CORS support
             services.AddCors();
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddJsonOptions(options =>
+                                        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +54,16 @@ namespace AGL.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pet Store API V1");
+            });
 
             app.UseHttpsRedirection();
 

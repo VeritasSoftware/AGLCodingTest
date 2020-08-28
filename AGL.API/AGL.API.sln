@@ -21,11 +21,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20-UnitTests", "20-UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.WebApi", "AGL.WebApi\AGL.WebApi.csproj", "{64C71161-5C1A-4DE5-A925-8B00273310F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGL.UnitTests", "AGL.UnitTests\AGL.UnitTests.csproj", "{410A15BA-1F6D-4628-9E5A-CE0EEA8FA5AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGL.UnitTests", "AGL.UnitTests\AGL.UnitTests.csproj", "{410A15BA-1F6D-4628-9E5A-CE0EEA8FA5AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{255F8157-13F8-49B3-AC43-FC9F5DF20038}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
+		SwaggerScreenshot.JPG = SwaggerScreenshot.JPG
 	EndProjectSection
 EndProject
 Global
