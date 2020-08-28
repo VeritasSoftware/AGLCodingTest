@@ -27,7 +27,7 @@ namespace AGL.API.Controllers
         /// Get pets by person gender endpoint
         /// </summary>
         /// <param name="petType">The pet type</param>
-        /// <returns><see cref="Task{PetsByPersonGenderCollection}"/></returns>
+        /// <returns><see cref="Task{IActionResult}"/></returns>
         [HttpGet("petsbypersongender/{petType}")]
         public async Task<IActionResult> GetPetsByPersonGender(PetType petType)
         {
