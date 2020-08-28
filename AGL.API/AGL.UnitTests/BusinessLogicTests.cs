@@ -1,4 +1,5 @@
 ﻿using AGL.Application;
+using AGL.Models;
 using AGL.Entities;
 using AGL.Repository;
 using NSubstitute;
@@ -21,102 +22,102 @@ namespace AGL.UnitTests
                 new Person
                 {
                     Name = "Bob",
-                    Gender = Gender.Male,
+                    Gender = Entities.Gender.Male,
                     Age = 23,
                     Pets = new List<Pet>
                     {
                         new Pet
                         {
                             Name = "Garfield",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         },
                         new Pet
                         {
                             Name = "Fido",
-                            Type = PetType.Dog
+                            Type = Entities.PetType.Dog
                         }
                     }
                 },
                 new Person
                 {
                     Name = "Jennifer",
-                    Gender = Gender.Female,
+                    Gender = Entities.Gender.Female,
                     Age = 18,
                     Pets = new List<Pet>
                     {
                         new Pet
                         {
                             Name = "Garfield",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         }
                     }
                 },
                 new Person
                 {
                     Name = "Steve",
-                    Gender = Gender.Male,
+                    Gender = Entities.Gender.Male,
                     Age = 45,
                     Pets = null
                 },
                 new Person
                 {
                     Name = "Fred",
-                    Gender = Gender.Male,
+                    Gender = Entities.Gender.Male,
                     Age = 40,
                     Pets = new List<Pet>
                     {
                         new Pet
                         {
                             Name = "Tom",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         },
                         new Pet
                         {
                             Name = "Max",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         },
                         new Pet
                         {
                             Name = "Sam",
-                            Type = PetType.Dog
+                            Type = Entities.PetType.Dog
                         },
                         new Pet
                         {
                             Name = "Jim",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         }
                     }
                 },
                 new Person
                 {
                     Name = "Samantha",
-                    Gender = Gender.Female,
+                    Gender = Entities.Gender.Female,
                     Age = 40,
                     Pets = new List<Pet>
                     {
                         new Pet
                         {
                             Name = "Tabby",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         }
                     }
                 },
                 new Person
                 {
                     Name = "Alice",
-                    Gender = Gender.Female,
+                    Gender = Entities.Gender.Female,
                     Age = 64,
                     Pets = new List<Pet>
                     {
                         new Pet
                         {
                             Name = "Simba",
-                            Type = PetType.Cat
+                            Type = Entities.PetType.Cat
                         },
                         new Pet
                         {
                             Name = "Nemo",
-                            Type = PetType.Fish
+                            Type = Entities.PetType.Fish
                         }
                     }
                 },
@@ -126,17 +127,19 @@ namespace AGL.UnitTests
             var petsRepository = Substitute.For<IPetsRepository>();
             petsRepository.GetPersonAndPets().Returns(personAndPets);
 
+            var mapperService = new MapperService();
+
             //Create PetsManager instance
-            IPetsManager petsManager = new PetsManager(petsRepository);
+            IPetsManager petsManager = new PetsManager(petsRepository, mapperService);
 
             //Call method to be tested. This method contains the business logic.
-            var catsByPersonGender = petsManager.GetPetsByPersonGender(PetType.Cat).Result;            
+            var catsByPersonGender = petsManager.GetPetsByPersonGender(Models.PetType.Cat).Result;            
 
             //Check that there are 2 genders in the collection
             Assert.True(catsByPersonGender.PetsByPersonGender.Count == 2);
 
             //Check Cats belonging to Male persons - alphabetically ordered
-            Assert.True(catsByPersonGender.PetsByPersonGender.First().Gender == Gender.Male);
+            Assert.True(catsByPersonGender.PetsByPersonGender.First().Gender == Models.Gender.Male);
             Assert.True(catsByPersonGender.PetsByPersonGender.First().Pets.Count() == 4);
             Assert.True(catsByPersonGender.PetsByPersonGender.First().Pets.ElementAt(0).Name == "Garfield");
             Assert.True(catsByPersonGender.PetsByPersonGender.First().Pets.ElementAt(1).Name == "Jim");
@@ -144,7 +147,7 @@ namespace AGL.UnitTests
             Assert.True(catsByPersonGender.PetsByPersonGender.First().Pets.ElementAt(3).Name == "Tom");
 
             //Check Cats belonging to Female persons - alphabetically ordered
-            Assert.True(catsByPersonGender.PetsByPersonGender.Last().Gender == Gender.Female);
+            Assert.True(catsByPersonGender.PetsByPersonGender.Last().Gender == Models.Gender.Female);
             Assert.True(catsByPersonGender.PetsByPersonGender.Last().Pets.Count() == 3);
             Assert.True(catsByPersonGender.PetsByPersonGender.Last().Pets.ElementAt(0).Name == "Garfield");
             Assert.True(catsByPersonGender.PetsByPersonGender.Last().Pets.ElementAt(1).Name == "Simba");

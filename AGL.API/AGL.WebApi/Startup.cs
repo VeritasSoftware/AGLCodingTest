@@ -36,6 +36,7 @@ namespace AGL.WebApi
             //add dependency injection
             services.AddScoped<IPetsRepository, PetsRepository>(x => new PetsRepository { Url = apiUrl });
             services.AddScoped<IPetsManager, PetsManager>();
+            services.AddScoped<IMapperService, MapperService>();
 
             //Add CORS support
             services.AddCors();

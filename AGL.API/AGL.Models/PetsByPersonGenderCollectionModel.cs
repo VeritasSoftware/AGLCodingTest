@@ -1,0 +1,9 @@
+﻿using System.Collections.Generic;
+
+namespace AGL.Models
+{
+    public class PetsByPersonGenderCollectionModel
+    {
+        public ICollection<PetsByPersonGenderModel> PetsByPersonGender { get; set; }
+    }
+}

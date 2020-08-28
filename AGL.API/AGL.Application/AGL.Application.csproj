@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
@@ -14,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AGL.Entities\AGL.Entities.csproj" />
+    <ProjectReference Include="..\AGL.Models\AGL.Models.csproj" />
     <ProjectReference Include="..\AGL.Repository\AGL.Repository.csproj" />
   </ItemGroup>
 

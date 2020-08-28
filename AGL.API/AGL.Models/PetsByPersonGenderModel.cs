@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 
-namespace AGL.Entities
+namespace AGL.Models
 {
     /// <summary>
     /// Class Pets By Person Gender
     /// </summary>
-    public class PetsByPersonGender
+    public class PetsByPersonGenderModel
     {
         public Gender Gender { get; set; }
 
         public PetType PetType { get; set; }
 
-        public IEnumerable<Pet> Pets { get; set; }
+        public IEnumerable<PetModel> Pets { get; set; }
     }
 }

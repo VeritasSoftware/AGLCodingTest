@@ -4,6 +4,7 @@ export class PetsByPersonGenderCollection {
 
 export class PetsByPersonGender {
     gender: Gender;
+    type: PetType;
     pets: Pet[];
 }
 
@@ -14,8 +15,7 @@ export enum Gender {
 
 export class Pet
 {
-    name: string;
-    type: PetType;
+    name: string;    
 }
 
 export enum PetType

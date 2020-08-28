@@ -1,5 +1,5 @@
 ﻿using AGL.Application;
-using AGL.Entities;
+using AGL.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

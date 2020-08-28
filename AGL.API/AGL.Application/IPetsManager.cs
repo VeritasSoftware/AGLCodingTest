@@ -1,4 +1,4 @@
-﻿using AGL.Entities;
+﻿using AGL.Models;
 using System;
 using System.Threading.Tasks;
 
@@ -9,6 +9,6 @@ namespace AGL.Application
     /// </summary>
     public interface IPetsManager : IDisposable
     {
-        Task<PetsByPersonGenderCollection> GetPetsByPersonGender(PetType petType);
+        Task<PetsByPersonGenderCollectionModel> GetPetsByPersonGender(PetType petType);
     }
 }

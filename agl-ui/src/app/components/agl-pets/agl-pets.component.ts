@@ -35,7 +35,6 @@ export class AglPetsComponent implements OnInit {
   async ngOnInit() {
     try {
       this.petsByPersonGender = null;
-      this.genders = [Gender[Gender.Male], Gender[Gender.Female]];      
 
       this.getPets(PetType.Dog);
     }

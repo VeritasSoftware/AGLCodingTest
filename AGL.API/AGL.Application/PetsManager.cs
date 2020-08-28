@@ -1,4 +1,5 @@
 ﻿using AGL.Entities;
+using AGL.Models;
 using AGL.Repository;
 using System;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace AGL.Application
     {
         private readonly Person[] _persons;
         private readonly IPetsRepository _petsRepository;
+        private readonly IMapperService _mapperService;
 
         public string Url { get; set; }        
 
@@ -20,9 +22,10 @@ namespace AGL.Application
         /// Constructor
         /// </summary>
         /// <param name="petsRepository">The injected pets repository</param>
-        public PetsManager(IPetsRepository petsRepository)
+        public PetsManager(IPetsRepository petsRepository, IMapperService mapperService)
         {
             _petsRepository = petsRepository ?? throw new ArgumentNullException(nameof(petsRepository));
+            _mapperService = mapperService ?? throw new ArgumentNullException(nameof(petsRepository));
         }
 
         public void Dispose()
@@ -35,12 +38,14 @@ namespace AGL.Application
         /// <param name="petType">The Pet type</param>
         /// <remarks>Throws ArgumentNullException</remarks>
         /// <returns><see cref="Task{PetsByPersonGenderCollection}"/></returns>
-        public async Task<PetsByPersonGenderCollection> GetPetsByPersonGender(PetType petType)
+        public async Task<PetsByPersonGenderCollectionModel> GetPetsByPersonGender(Models.PetType petType)
         {
-            var persons = await _petsRepository.GetPersonAndPets();
+            var entitiesPetType = (Entities.PetType)Enum.Parse(typeof(Entities.PetType), petType.ToString());
 
+            var persons = await _petsRepository.GetPersonAndPets();
+            
             //LINQ Query to get Pets by Person's gender and Pet type
-            return new PetsByPersonGenderCollection()
+            var entities = new PetsByPersonGenderCollection()
             {
                 PetsByPersonGender = persons.ToList()
                                            .Where(person => person.Pets != null)
@@ -48,9 +53,15 @@ namespace AGL.Application
                                            .Select(g => new PetsByPersonGender
                                            {
                                                Gender = g.Key,
-                                               Pets = g.SelectMany(person => person.Pets.Where(pet => pet.Type == petType)).OrderBy(x => x.Name)
+                                               PetType = entitiesPetType,
+                                               Pets = g.SelectMany(person => person.Pets.Where(pet => pet.Type == entitiesPetType)).OrderBy(x => x.Name)
                                            }).ToList()
             };
+
+            //Map entities to models
+            var models = _mapperService.Map(entities);
+
+            return models;
         }
     }
 }
