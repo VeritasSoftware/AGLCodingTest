@@ -9,8 +9,6 @@ namespace AGL.Models
     {
         public Gender Gender { get; set; }
 
-        public PetType PetType { get; set; }
-
         public IEnumerable<PetModel> Pets { get; set; }
     }
 }

@@ -47,13 +47,13 @@ namespace AGL.Application
             //LINQ Query to get Pets by Person's gender and Pet type
             var entities = new PetsByPersonGenderCollection()
             {
+                PetType = entitiesPetType,
                 PetsByPersonGender = persons.ToList()
                                            .Where(person => person.Pets != null)
                                            .GroupBy(person => person.Gender)
                                            .Select(g => new PetsByPersonGender
                                            {
-                                               Gender = g.Key,
-                                               PetType = entitiesPetType,
+                                               Gender = g.Key,                                               
                                                Pets = g.SelectMany(person => person.Pets.Where(pet => pet.Type == entitiesPetType)).OrderBy(x => x.Name)
                                            }).ToList()
             };

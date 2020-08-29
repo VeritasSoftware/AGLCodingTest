@@ -51,43 +51,37 @@ The API has
 
 ```javascript
 {
+  "petType": "Cat",
   "petsByPersonGender": [
     {
-      "gender": 0,
+      "gender": "Male",
       "pets": [
         {
-          "name": "Garfield",
-          "type": 2
+          "name": "Garfield"
         },
         {
-          "name": "Jim",
-          "type": 2
+          "name": "Jim"
         },
         {
-          "name": "Max",
-          "type": 2
+          "name": "Max"
         },
         {
-          "name": "Tom",
-          "type": 2
-        }                
+          "name": "Tom"
+        }
       ]
     },
     {
-      "gender": 1,
+      "gender": "Female",
       "pets": [
         {
-          "name": "Garfield",
-          "type": 2
+          "name": "Garfield"
         },
         {
-          "name": "Simba",
-          "type": 2
+          "name": "Simba"
         },
         {
-          "name": "Tabby",
-          "type": 2
-        }        
+          "name": "Tabby"
+        }
       ]
     }
   ]

@@ -9,8 +9,6 @@ namespace AGL.Entities
     {
         public Gender Gender { get; set; }
 
-        public PetType PetType { get; set; }
-
         public IEnumerable<Pet> Pets { get; set; }
     }
 }
